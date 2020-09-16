@@ -22,8 +22,30 @@ print(x)
 
 ## Create a histogram of the distribution and the distribution on the log scale
 ```{r histX}
-hist(x, main= paste("Histogram of samples from log normal distribution"))
-hist(log(x),main=paste("Histogram of samples from log normal distribution on log scale"))
+#hist(x, main= paste("Histogram of samples from log normal distribution"))
+#hist(log(x),main=paste("Histogram of samples from log normal distribution on log scale"))
+
+library(ggplot2)
+qplot(x, geom="histogram",
+      binwidth=0.04,
+      log="", 
+      main="Histogram of samples from log normal distribution", 
+      xlab="sample", 
+      ylab="frequency",
+      fill=I("blue"),
+      col=I("red"))
+qplot(x, 
+      geom="histogram",
+      binwidth=0.04,
+      log="x",
+      main="Histogram of samples from log normal distribution on log scale",
+      xlab="sample on logscale",
+      ylab="frequency",
+      fill=I("green"),
+      col=I("yellow"))
+
+
+
 ```
 
 
@@ -43,6 +65,9 @@ variance.samples<-var(x)
 
 mean of samples is `r mean.samples`
 and variance of samples is `r variance.samples`
+
+
+
 
 
 
